@@ -1,0 +1,68 @@
+{
+  "about-office": {
+    "src": "assets/img/about-office.jpg",
+    "title": "New York City, Midtown Manhattan, New York Public Library NYPL, Stephen A. Schwarzman Building, 1897-1911",
+    "creator": "(vincent desjardins)",
+    "creator_url": "https://www.flickr.com/photos/44613506@N07",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/44613506@N07/5432350426",
+    "source": "flickr"
+  },
+  "practice-desk": {
+    "src": "assets/img/practice-desk.jpg",
+    "title": "Work Papers",
+    "creator": "Matt Moloney",
+    "creator_url": "https://mjmolo.com",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/work-papers-FL8F0JKTMA",
+    "source": "stocksnap"
+  },
+  "justice-statue": {
+    "src": "assets/img/justice-statue.png",
+    "title": "Justice",
+    "creator": "Tim Green aka atoach",
+    "creator_url": "https://www.flickr.com/photos/93416311@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/93416311@N00/3020503532",
+    "source": "flickr"
+  },
+  "courthouse": {
+    "src": "assets/img/courthouse.jpg",
+    "title": "Supreme Court",
+    "creator": "brittanylynae",
+    "creator_url": "https://www.flickr.com/photos/21979693@N03",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/21979693@N03/2250990821",
+    "source": "flickr"
+  },
+  "consult-room": {
+    "src": "assets/img/consult-room.jpg",
+    "title": "My desk",
+    "creator": "aubergene",
+    "creator_url": "https://www.flickr.com/photos/39387762@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/39387762@N00/4862437275",
+    "source": "flickr"
+  },
+  "hero": {
+    "src": "assets/img/hero.jpg",
+    "title": "British Museum - panoramic",
+    "creator": "ell brown",
+    "creator_url": "https://www.flickr.com/photos/39415781@N06",
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/39415781@N06/20496222784",
+    "source": "flickr"
+  }
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi cuenta — MartinezTech</title>
+<meta name="description" content="Tu cuenta MartinezTech: datos personales y cursos comprados.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f46e5'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-weight='800' font-size='14' text-anchor='middle' fill='%23fff'%3EMT%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="assets/css/styles.css?v=20260810">
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-badge">MT</span>
+      <span class="nav-logo-text">MartinezTech</span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="cursos.html" class="nav-link">Cursos</a>
+      <a href="index.html#como-funciona" class="nav-link">Cómo funciona</a>
+      <a href="index.html#faq" class="nav-link">Preguntas frecuentes</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost" data-auth-guest>Iniciar sesión</a>
+      <a href="registro.html" class="btn btn-primary" data-auth-guest>Crear cuenta</a>
+      <a href="#" class="btn btn-ghost" data-auth-user data-logout style="display:none">Cerrar sesión</a>
+    </div>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+    <a href="index.html">Inicio</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="login.html" data-auth-guest>Iniciar sesión</a>
+    <a href="registro.html" data-auth-guest>Crear cuenta</a>
+    <a href="#" data-auth-user data-logout style="display:none">Cerrar sesión</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section-tight">
+    <div class="container">
+
+      <div id="account-guest" style="display:none" class="empty-state">
+        <h2>Iniciá sesión para ver tu cuenta</h2>
+        <p>Necesitás iniciar sesión para acceder a tu perfil y tus cursos.</p>
+        <a href="login.html?redirect=mi-cuenta.html" class="btn btn-primary" style="margin-top:16px;">Iniciar sesión</a>
+      </div>
+
+      <div id="account-content" style="display:none">
+        <div class="account-head">
+          <div class="account-avatar" id="account-initials">A</div>
+          <div>
+            <h1 style="font-size:1.5rem;" id="account-name">Nombre</h1>
+            <p style="color:var(--ink-mute);" id="account-email">email@ejemplo.com</p>
+          </div>
+          <a href="#" class="btn btn-outline" data-logout style="margin-left:auto;">Cerrar sesión</a>
+        </div>
+
+        <h2 style="font-size:1.2rem; margin-bottom:20px;">Mis cursos</h2>
+        <div class="enrolled-grid" id="enrolled-courses"></div>
+
+        <div id="enrolled-empty" class="empty-state glass-card" style="display:none;">
+          <p>Todavía no compraste ningún curso.</p>
+          <a href="cursos.html" class="btn btn-primary" style="margin-top:16px;">Ver catálogo</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> MartinezTech. Todos los derechos reservados.</span>
+      <span>Sitio en construcción — contenido de ejemplo.</span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="assets/js/auth.js?v=20260810"></script>
+<script defer src="assets/js/courses-data.js?v=20260810"></script>
+<script defer src="assets/js/courses-ui.js?v=20260810"></script>
+<script defer src="assets/js/main.js?v=20260810"></script>
+<script defer src="assets/js/account.js?v=20260810"></script>
+</body>
+</html>

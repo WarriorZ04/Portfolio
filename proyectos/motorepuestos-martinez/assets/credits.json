@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "src": "assets/img/hero.jpg",
+    "title": "motorcycle repair shop",
+    "creator": "Ahia",
+    "creator_url": "https://www.flickr.com/photos/22995629@N00",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/22995629@N00/10737903774",
+    "source": "flickr"
+  },
+  "workshop": {
+    "src": "assets/img/workshop.jpg",
+    "title": "Carroll Gardens Motorcycle repair shop",
+    "creator": "postopp1",
+    "creator_url": "https://www.flickr.com/photos/20683116@N02",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/20683116@N02/3658782200",
+    "source": "flickr"
+  }
+}
