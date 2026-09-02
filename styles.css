@@ -266,38 +266,8 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   transition: background .6s var(--ease-out);
   pointer-events: none;
 }
-.hero-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: flex-start;
-  gap: 2.5rem;
-}
-.hero-copy { min-width: 0; }
+.hero-inner { position: relative; }
 .hero-kicker { margin-bottom: 1.6rem; }
-.hero-avatar {
-  flex: none;
-  width: clamp(160px, 32vw, 260px);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--bg-3);
-  padding: 0.6rem;
-  box-shadow: 0 0 0 1px var(--line-soft), 0 30px 60px -20px rgba(124, 108, 255, 0.25);
-}
-.hero-avatar img {
-  width: 100%;
-  border-radius: 14px;
-  image-rendering: pixelated;
-}
-
-@media (min-width: 960px) {
-  .hero-inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-  }
-}
 .hero-title {
   font-family: var(--mono);
   font-weight: 700;
