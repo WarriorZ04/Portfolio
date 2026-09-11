@@ -34,18 +34,42 @@ html, body {
   text-shadow: 2px 2px 0 #7a1f1f;
 }
 
-.back-link, .header-spacer {
-  flex: 1;
-}
-
 .back-link {
+  flex: 1;
   color: #a9a49a;
   text-decoration: none;
   font-size: 13px;
 }
 .back-link:hover { color: #ffd400; }
 
-.game-header .header-spacer { text-align: right; }
+.game-header .fullscreen-btn {
+  flex: 1;
+  text-align: right;
+}
+
+.fullscreen-btn {
+  background: transparent;
+  border: none;
+  color: #a9a49a;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+  font-family: inherit;
+}
+.fullscreen-btn:hover { color: #ffd400; }
+
+.fullscreen-btn--stage {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 5;
+  background: rgba(0,0,0,.45);
+  border-radius: 4px;
+  color: #f4f1e8;
+  text-align: center;
+}
+.fullscreen-btn--stage:hover { color: #ffd400; }
 
 .stage {
   position: relative;
@@ -65,6 +89,24 @@ html, body {
   height: 100%;
   display: block;
   image-rendering: pixelated;
+}
+
+.stage:fullscreen,
+.stage:-webkit-full-screen,
+.stage:-moz-full-screen {
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.stage:fullscreen #game,
+.stage:-webkit-full-screen #game,
+.stage:-moz-full-screen #game {
+  object-fit: contain;
 }
 
 /* HUD */

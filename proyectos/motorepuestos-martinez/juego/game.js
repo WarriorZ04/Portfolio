@@ -750,6 +750,37 @@ function startGame() {
 startBtn.addEventListener("click", startGame);
 restartBtn.addEventListener("click", startGame);
 
+// ---------------------------------------------------------- FULLSCREEN ---
+const stageEl = document.getElementById("stage");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenBtnStage = document.getElementById("fullscreenBtnStage");
+
+function isFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+}
+
+function toggleFullscreen() {
+  if (!isFullscreen()) {
+    const req = stageEl.requestFullscreen || stageEl.webkitRequestFullscreen || stageEl.msRequestFullscreen;
+    if (req) req.call(stageEl);
+  } else {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+    if (exit) exit.call(document);
+  }
+}
+
+function updateFullscreenButtons() {
+  const icon = isFullscreen() ? "⤢" : "⛶";
+  fullscreenBtn.textContent = icon;
+  fullscreenBtnStage.textContent = icon;
+}
+
+fullscreenBtn.addEventListener("click", toggleFullscreen);
+fullscreenBtnStage.addEventListener("click", toggleFullscreen);
+["fullscreenchange", "webkitfullscreenchange", "msfullscreenchange"].forEach((ev) =>
+  document.addEventListener(ev, updateFullscreenButtons)
+);
+
 resetGame();
 render();
 requestAnimationFrame(loop);
