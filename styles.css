@@ -2,18 +2,18 @@
    1. Tokens
    ============================================================= */
 :root {
-  --bg:         #0a0a0f;
-  --bg-2:       #111117;
-  --bg-3:       #16161d;
-  --ink:        #f1f1f4;
-  --ink-soft:   rgba(241, 241, 244, 0.72);
-  --ink-mute:   rgba(241, 241, 244, 0.46);
-  --accent:     #7c6cff;
-  --accent-2:   #5a4bd6;
-  --accent-soft: rgba(124, 108, 255, 0.14);
-  --live:       #57e0a0;
-  --line:       rgba(241, 241, 244, 0.1);
-  --line-soft:  rgba(241, 241, 244, 0.06);
+  --bg:         #0a1119;
+  --bg-2:       #0f1a26;
+  --bg-3:       rgba(12, 22, 33, 0.58);
+  --ink:        #eef4f9;
+  --ink-soft:   rgba(238, 244, 249, 0.8);
+  --ink-mute:   rgba(238, 244, 249, 0.58);
+  --accent:     #8ecdf0;
+  --accent-2:   #5fa8d3;
+  --accent-soft: rgba(142, 205, 240, 0.16);
+  --live:       #7fe3cf;
+  --line:       rgba(220, 236, 248, 0.16);
+  --line-soft:  rgba(220, 236, 248, 0.07);
 
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -75,6 +75,49 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
 }
 
 /* =============================================================
+   2b. Video background (fixed, behind everything)
+   ============================================================= */
+.bg-scene {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--bg);
+  pointer-events: none;
+}
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background: var(--bg) url("assets/img/mountain-bg.webp") 38% center / cover no-repeat;
+}
+/* Velo base: azul noche, más cerrado abajo y en los bordes */
+.bg-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 14, 22, 0.62) 0%, rgba(8, 14, 22, 0.3) 55%, rgba(8, 14, 22, 0) 100%),
+    radial-gradient(ellipse at 60% 38%, rgba(8, 14, 22, 0.16) 0%, rgba(8, 14, 22, 0.55) 100%),
+    linear-gradient(180deg, rgba(8, 14, 22, 0.42) 0%, rgba(8, 14, 22, 0.4) 45%, rgba(8, 14, 22, 0.7) 100%);
+}
+/* Velo extra: main.js sube --scrim (0 → 1) al bajar por la página, así el
+   hero deja ver la montaña y las secciones con más texto quedan legibles */
+.bg-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(8, 14, 22);
+  opacity: calc(var(--scrim, 0) * 0.5);
+}
+.bg-snow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* =============================================================
    3. Utilities
    ============================================================= */
 .container {
@@ -100,8 +143,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
 }
 .eyebrow::before {
   content: "";
-  width: 6px; height: 6px; border-radius: 50%;
+  width: 7px; height: 7px;
   background: var(--accent);
+  transform: rotate(45deg);
   flex: none;
 }
 .section {
@@ -135,6 +179,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
 /* =============================================================
    4. Buttons & links
    ============================================================= */
+.btn, .project-tag {
+  text-shadow: none;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -151,9 +198,10 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   background: var(--ink);
   color: var(--bg);
 }
-.btn-primary:hover { background: var(--accent); color: var(--ink); transform: translateY(-2px); }
+.btn-primary:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
 .btn-ghost {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(220, 236, 248, 0.32);
+  background: rgba(8, 14, 22, 0.4);
   color: var(--ink);
 }
 .btn-ghost:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
@@ -183,12 +231,12 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   display: flex;
   align-items: center;
   z-index: 100;
-  background: rgba(10, 10, 15, 0);
+  background: rgba(10, 17, 25, 0);
   border-bottom: 1px solid transparent;
   transition: background .4s var(--ease-out), border-color .4s var(--ease-out);
 }
 .nav.is-scrolled {
-  background: rgba(10, 10, 15, 0.82);
+  background: rgba(10, 17, 25, 0.72);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom-color: var(--line);
@@ -261,13 +309,32 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   z-index: -1;
   background:
     radial-gradient(circle 620px at var(--mx, 30%) var(--my, 30%), var(--accent-soft) 0%, transparent 60%),
-    radial-gradient(circle 500px at calc(100% - var(--mx, 30%)) calc(100% - var(--my, 30%)), rgba(87, 224, 160, 0.08) 0%, transparent 60%);
+    radial-gradient(circle 500px at calc(100% - var(--mx, 30%)) calc(100% - var(--my, 30%)), rgba(200, 228, 246, 0.07) 0%, transparent 60%);
   filter: blur(10px);
   transition: background .6s var(--ease-out);
   pointer-events: none;
 }
-.hero-inner { position: relative; }
+.hero-inner { position: relative; isolation: isolate; }
+/* Halo oscuro y difuso detrás del texto: la imagen de fondo se ve entera,
+   pero el texto siempre tiene un fondo parejo y oscuro para leerse bien */
+.hero-inner::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 0;
+  width: min(880px, calc(100% + 4rem));
+  height: 150%;
+  transform: translate(-6%, -50%);
+  background: radial-gradient(closest-side, rgba(6, 11, 17, 0.8) 0%, rgba(6, 11, 17, 0.62) 50%, rgba(6, 11, 17, 0) 100%);
+  filter: blur(14px);
+  pointer-events: none;
+}
 .hero-kicker { margin-bottom: 1.6rem; }
+.hero-inner, .about-text, .section-head, .project-row {
+  text-shadow: 0 1px 3px rgba(6, 11, 17, 0.6), 0 2px 22px rgba(6, 11, 17, 0.65);
+}
+.hero-kicker { color: var(--ink); }
 .hero-title {
   font-family: var(--mono);
   font-weight: 700;
@@ -281,7 +348,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   margin-top: 1.6rem;
   max-width: 46ch;
   font-size: clamp(1rem, 1.4vw, 1.2rem);
-  color: var(--ink-soft);
+  color: var(--ink);
 }
 .hero-actions {
   margin-top: 2.4rem;
@@ -297,7 +364,8 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   gap: .7rem;
   font-family: var(--mono);
   font-size: .78rem;
-  color: var(--ink-mute);
+  color: var(--ink);
+  text-shadow: 0 1px 3px rgba(6, 11, 17, 0.8), 0 0 14px rgba(6, 11, 17, 0.8);
 }
 .hero-scroll-line {
   width: 1px; height: 34px;
@@ -406,7 +474,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
 .game-card {
   position: relative;
   border: 1px solid var(--line);
-  background: var(--bg-3);
+  background: rgba(12, 22, 33, 0.8);
   border-radius: 18px;
   padding: 1.7rem;
   min-height: 220px;
@@ -427,16 +495,23 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
   transition: opacity .5s var(--ease-out);
   pointer-events: none;
 }
+@supports (backdrop-filter: blur(10px)) {
+  .game-card {
+    background: var(--bg-3);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+  }
+}
 .game-card.is-live { cursor: pointer; }
 .game-card.is-live:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  background: #191924;
+  background: rgba(16, 30, 44, 0.85);
 }
 .game-card.is-live:hover::before { opacity: 1; }
 .game-card.is-soon {
   cursor: default;
-  opacity: 0.55;
+  opacity: 0.75;
 }
 .game-status {
   align-self: flex-start;
@@ -453,13 +528,13 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.05; letter-spacing: -0.02em;
 .game-status.is-live::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
   background: var(--live);
-  box-shadow: 0 0 0 0 rgba(87, 224, 160, .6);
+  box-shadow: 0 0 0 0 rgba(127, 227, 207,.6);
   animation: pulseDot 2.2s ease-out infinite;
 }
 @keyframes pulseDot {
-  0%   { box-shadow: 0 0 0 0 rgba(87, 224, 160, .5); }
-  70%  { box-shadow: 0 0 0 8px rgba(87, 224, 160, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(87, 224, 160, 0); }
+  0%   { box-shadow: 0 0 0 0 rgba(127, 227, 207,.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(127, 227, 207,0); }
+  100% { box-shadow: 0 0 0 0 rgba(127, 227, 207,0); }
 }
 .game-title {
   margin-top: 1rem;

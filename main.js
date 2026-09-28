@@ -119,6 +119,115 @@
     });
   }
 
+  /* ---------- Scene: snow (canvas) + scroll-driven scrim ---------- */
+
+  // Nieve generada por código: no tiene loop ni corte, cada copo cae, sale por
+  // abajo y reaparece arriba a su propio ritmo. Tres capas de profundidad.
+  function initSnow() {
+    var canvas = $("[data-snow]");
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Cantidad por capa para una pantalla de 1920x1080 (se escala por área)
+    var LAYERS = [
+      { n: 150, size: [0.7, 1.4],  speed: [22, 42],   alpha: 0.42, sway: 6,  z: 0.35 }, // lejos
+      { n: 90,  size: [1.4, 2.6],  speed: [48, 84],   alpha: 0.66, sway: 12, z: 0.7  }, // medio
+      { n: 26,  size: [3.2, 6.5],  speed: [110, 190], alpha: 0.85, sway: 22, z: 1.15 }  // cerca (desenfocado)
+    ];
+    var density = reduced ? 0.45 : 1;   // con "reducir movimiento": menos y más lenta
+    var speedScale = reduced ? 0.45 : 1;
+
+    // Sprite de un copo suave (círculo con borde difuso), reutilizado por todos
+    var sprite = document.createElement("canvas");
+    sprite.width = sprite.height = 64;
+    var sctx = sprite.getContext("2d");
+    var g = sctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0, "rgba(255,255,255,1)");
+    g.addColorStop(0.35, "rgba(240,247,255,0.85)");
+    g.addColorStop(1, "rgba(235,244,255,0)");
+    sctx.fillStyle = g;
+    sctx.fillRect(0, 0, 64, 64);
+
+    var W = 0, H = 0, dpr = 1, flakes = [];
+    var rand = function (a, b) { return a + Math.random() * (b - a); };
+
+    function spawn(layer, anywhere) {
+      return {
+        x: rand(0, W),
+        y: anywhere ? rand(0, H) : rand(-30, -4),
+        r: rand(layer.size[0], layer.size[1]),
+        vy: rand(layer.speed[0], layer.speed[1]) * speedScale,
+        a: layer.alpha * rand(0.65, 1),
+        ph: rand(0, Math.PI * 2),
+        sf: rand(0.4, 1.1),
+        layer: layer
+      };
+    }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var areaScale = (W * H) / (1920 * 1080);
+      flakes = [];
+      LAYERS.forEach(function (layer) {
+        var count = Math.max(8, Math.round(layer.n * areaScale * density));
+        for (var i = 0; i < count; i++) flakes.push(spawn(layer, true));
+      });
+    }
+
+    var last = performance.now();
+    function frame(now) {
+      var dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      var t = now / 1000;
+      // Viento: brisa constante que se va y viene, con ráfagas lentas
+      var wind = (30 + 22 * Math.sin(t * 0.23) + 14 * Math.sin(t * 0.71 + 1.3)) * speedScale;
+
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < flakes.length; i++) {
+        var f = flakes[i], L = f.layer;
+        f.y += f.vy * dt;
+        f.x += (wind * L.z + Math.sin(t * f.sf + f.ph) * L.sway) * dt;
+        if (f.y - f.r > H) { flakes[i] = f = spawn(L, false); }
+        if (f.x - f.r > W) f.x = -f.r;
+        else if (f.x + f.r < 0) f.x = W + f.r;
+        var s = f.r * 2;
+        ctx.globalAlpha = f.a;
+        ctx.drawImage(sprite, f.x - f.r, f.y - f.r, s, s);
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(frame);
+    }
+
+    resize();
+    var rt = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(rt);
+      rt = setTimeout(resize, 150);
+    });
+    requestAnimationFrame(frame);
+  }
+
+  // Velo del fondo: 0 arriba de todo (se ve la montaña) → 1 al bajar al contenido
+  function initScrim() {
+    var root = document.documentElement;
+    var ticking = false;
+    var update = function () {
+      var p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.85)));
+      root.style.setProperty("--scrim", p.toFixed(3));
+      ticking = false;
+    };
+    update();
+    window.addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+  }
+
   /* ---------- Reveal on scroll ---------- */
 
   function initReveals() {
@@ -188,6 +297,8 @@
     safe(initNav, "initNav");
     safe(setupSmoothScroll, "setupSmoothScroll");
     safe(initMouseGradient, "initMouseGradient");
+    safe(initSnow, "initSnow");
+    safe(initScrim, "initScrim");
     safe(initReveals, "initReveals");
     safe(initGameModal, "initGameModal");
     document.documentElement.classList.add("is-ready");
