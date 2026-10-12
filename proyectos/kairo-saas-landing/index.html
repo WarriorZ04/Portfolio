@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kairo — El trabajo importante, en el momento justo</title>
+  <meta name="description" content="Kairo planifica tu día, protege tus horas de foco y ordena los rituales de tu equipo. Agenda una consulta de 30 minutos." />
+  <meta name="theme-color" content="#09090b" />
+  <meta property="og:title" content="Kairo — El trabajo importante, en el momento justo" />
+  <meta property="og:description" content="Planificación diaria, bloques de foco y rituales de equipo en un solo lugar." />
+  <meta property="og:image" content="assets/img/workspace.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23c8ff4d'/%3E%3Cpath d='M10 8v16M10 16l9-8M13 13.5L21 24' stroke='%2309090b' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260923b" />
+  <script>document.documentElement.classList.add("js");</script>
+
+  <script defer src="lib/gsap.min.js?v=20260923b"></script>
+  <script defer src="lib/ScrollTrigger.min.js?v=20260923b"></script>
+  <script defer src="lib/manifest.js?v=20260923b"></script>
+  <script defer src="main.js?v=20260923b"></script>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a href="#top" class="brand" aria-label="Kairo, inicio">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="9"/><path d="M10 8v16M10 16l9-8M13 13.5L21 24"/></svg>
+        </span>
+        <span class="brand__word">kairo</span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#producto">Producto</a>
+        <a href="#metodo">Método</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#clientes">Clientes</a>
+      </nav>
+      <a href="#contacto" class="btn btn--accent btn--sm nav__cta">Agendar consulta</a>
+      <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" data-burger><span></span><span></span></button>
+    </div>
+    <div class="nav__sheet" data-sheet>
+      <a href="#producto">Producto</a>
+      <a href="#metodo">Método</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#contacto" class="btn btn--accent">Agendar consulta</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" data-hero>
+      <div class="hero__mesh" aria-hidden="true" data-mesh></div>
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__noise" aria-hidden="true"></div>
+
+      <div class="hero__content container">
+        <a href="#producto" class="pill">
+          <span class="pill__tag">Nuevo</span>
+          Kairo 3.0<span class="pill__more"> · planificación asistida para equipos</span>
+          <span class="pill__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <h1 class="hero__title" data-split>
+          El trabajo importante,<br />en el <em>momento justo.</em>
+        </h1>
+
+        <p class="hero__lead">
+          Kairo ordena tu día antes de que empiece: protege horas de foco,
+          agrupa las reuniones y le dice a tu equipo qué merece atención ahora.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="#contacto" class="btn btn--accent btn--lg" data-magnetic>
+            Agendar una consulta
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+          </a>
+          <a href="#producto" class="btn btn--ghost btn--lg">Ver cómo funciona</a>
+        </div>
+
+        <ul class="hero__proof" aria-label="Datos destacados">
+          <li><strong>12.000+</strong> equipos</li>
+          <li><strong>4,9/5</strong> en G2</li>
+          <li><strong>SOC 2</strong> tipo II</li>
+        </ul>
+      </div>
+
+      <!-- Product mockup -->
+      <div class="mock-stage container" data-mock-stage>
+        <div class="mock" data-mock>
+          <div class="mock__bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="mock__url">app.kairo.io/hoy</span>
+          </div>
+          <div class="mock__body">
+            <aside class="mock__side">
+              <div class="mock__ws"><span class="ws-av">A</span> Altamar</div>
+              <ul class="mock__nav">
+                <li class="is-active"><i class="ic ic--sun"></i>Hoy</li>
+                <li><i class="ic ic--cal"></i>Semana</li>
+                <li><i class="ic ic--focus"></i>Foco</li>
+                <li><i class="ic ic--team"></i>Equipo</li>
+                <li><i class="ic ic--chart"></i>Insights</li>
+              </ul>
+              <p class="mock__label">Proyectos</p>
+              <ul class="mock__projects">
+                <li><span style="--c:#c8ff4d"></span>Lanzamiento Q4</li>
+                <li><span style="--c:#8b7bff"></span>Rediseño app</li>
+                <li><span style="--c:#ff7aa2"></span>Contratación</li>
+              </ul>
+            </aside>
+
+            <div class="mock__main">
+              <div class="mock__head">
+                <div>
+                  <p class="mock__date">Martes 23 de septiembre</p>
+                  <p class="mock__greet">Buenos días, Ana. <span>Hoy tienes 3 prioridades.</span></p>
+                </div>
+                <span class="mock__chip"><i></i>Día planificado</span>
+              </div>
+
+              <div class="timeline">
+                <div class="timeline__hours" aria-hidden="true">
+                  <span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                </div>
+                <div class="timeline__track">
+                  <div class="blk blk--focus" style="--s:0;--e:2.5">
+                    <b>Foco profundo</b><small>Propuesta comercial Q4</small>
+                  </div>
+                  <div class="blk blk--meet" style="--s:2.75;--e:3.25"><b>Standup</b></div>
+                  <div class="blk blk--meet2" style="--s:3.5;--e:4.5"><b>Revisión de diseño</b><small>con Martín, Sofía</small></div>
+                  <div class="blk blk--batch" style="--s:5;--e:5.75"><b>Correo y Slack</b><small>en lote</small></div>
+                  <div class="blk blk--focus2" style="--s:6;--e:8"><b>Foco</b><small>Onboarding v2</small></div>
+                  <div class="timeline__now" style="--n:1.35"><span>10:21</span></div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="mock__panel">
+              <div class="card-mini">
+                <p class="mock__label">Sesión de foco</p>
+                <div class="ring">
+                  <svg viewBox="0 0 120 120" aria-hidden="true">
+                    <circle cx="60" cy="60" r="52" class="ring__bg"/>
+                    <circle cx="60" cy="60" r="52" class="ring__fg" data-ring/>
+                  </svg>
+                  <div class="ring__txt"><strong data-timer>42:18</strong><small>restantes</small></div>
+                </div>
+              </div>
+              <div class="card-mini">
+                <p class="mock__label">Prioridades</p>
+                <ul class="todo">
+                  <li class="is-done"><i></i>Cerrar presupuesto</li>
+                  <li><i></i>Propuesta Q4</li>
+                  <li><i></i>Feedback a Diego</li>
+                </ul>
+              </div>
+              <div class="card-mini">
+                <p class="mock__label">Foco esta semana</p>
+                <div class="bars" aria-hidden="true">
+                  <span style="--h:.45"></span><span style="--h:.7"></span><span style="--h:.55"></span><span style="--h:.9" class="is-hi"></span><span style="--h:.3"></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="float float--a" aria-hidden="true">
+          <span class="float__ic">↻</span>
+          <div><b>Reunión movida</b><small>Tu bloque de foco quedó protegido</small></div>
+        </div>
+        <div class="float float--b" aria-hidden="true">
+          <span class="float__ic float__ic--lime">+2h</span>
+          <div><b>Más foco que ayer</b><small>Mejor racha del mes</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGOS ============ -->
+    <section class="logos" aria-label="Empresas que usan Kairo">
+      <p class="logos__label">Equipos que ya trabajan con menos ruido</p>
+      <div class="marquee">
+        <div class="marquee__track">
+          <span>Altamar</span><span>◆ Lumen Labs</span><span>Nórdica</span><span>▲ Prisma</span><span>Fábrica Norte</span><span>● Brújula</span><span>Ventisca</span><span>Oleaje ✦</span>
+          <span aria-hidden="true">Altamar</span><span aria-hidden="true">◆ Lumen Labs</span><span aria-hidden="true">Nórdica</span><span aria-hidden="true">▲ Prisma</span><span aria-hidden="true">Fábrica Norte</span><span aria-hidden="true">● Brújula</span><span aria-hidden="true">Ventisca</span><span aria-hidden="true">Oleaje ✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="manifesto container">
+      <p class="eyebrow">01 — Por qué existimos</p>
+      <p class="manifesto__text" data-words>
+        Tu calendario dice que estás ocupado. Tu lista dice que vas atrasado.
+        Ninguno te dice qué hacer ahora. Kairo sí: mira tus prioridades, tus reuniones
+        y tu energía, y convierte el día en un plan que se puede cumplir.
+      </p>
+    </section>
+
+    <!-- ============ PRODUCTO (bento) ============ -->
+    <section class="product container" id="producto">
+      <div class="section-head">
+        <p class="eyebrow">02 — Producto</p>
+        <h2 class="h2" data-reveal>Cinco herramientas.<br /><em>Un solo ritmo de trabajo.</em></h2>
+        <p class="section-head__lead" data-reveal>Cada módulo funciona solo, pero rinde más con los demás. Empieza por el que más te duela hoy.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile tile--wide" data-spot data-reveal>
+          <div class="tile__copy">
+            <span class="tile__num">A</span>
+            <h3>Planificación diaria automática</h3>
+            <p>Cada mañana Kairo arma tu día con tus tareas, tus reuniones y los plazos del equipo. Tú apruebas o arrastras. Tarda menos que un café.</p>
+          </div>
+          <div class="viz viz--plan" aria-hidden="true">
+            <div class="vp-row"><span class="vp-t">09:00</span><span class="vp-b" style="--w:78%;--c:var(--accent)"></span></div>
+            <div class="vp-row"><span class="vp-t">11:30</span><span class="vp-b" style="--w:30%;--c:var(--violet)"></span></div>
+            <div class="vp-row"><span class="vp-t">12:00</span><span class="vp-b" style="--w:52%;--c:var(--violet)"></span></div>
+            <div class="vp-row"><span class="vp-t">14:00</span><span class="vp-b" style="--w:22%;--c:var(--rose)"></span></div>
+            <div class="vp-row"><span class="vp-t">15:00</span><span class="vp-b" style="--w:88%;--c:var(--accent)"></span></div>
+          </div>
+        </article>
+
+        <article class="tile" data-spot data-reveal>
+          <div class="tile__copy">
+            <span class="tile__num">B</span>
+            <h3>Bloques de foco</h3>
+            <p>Silencia notificaciones, avisa a tu equipo y defiende el bloque si alguien intenta agendar encima.</p>
+          </div>
+          <div class="viz viz--focus" aria-hidden="true">
+            <div class="vf-ring"><span>25:00</span></div>
+          </div>
+        </article>
+
+        <article class="tile" data-spot data-reveal>
+          <div class="tile__copy">
+            <span class="tile__num">C</span>
+            <h3>Rituales de equipo</h3>
+            <p>Standups asíncronos, retros y check-ins semanales que se escriben en dos minutos y se leen en uno.</p>
+          </div>
+          <div class="viz viz--team" aria-hidden="true">
+            <span class="av" style="--c:#8b7bff">MO</span><span class="av" style="--c:#ff7aa2">SL</span><span class="av" style="--c:#5cc8ff">DF</span><span class="av av--plus">+9</span>
+          </div>
+        </article>
+
+        <article class="tile" data-spot data-reveal>
+          <div class="tile__copy">
+            <span class="tile__num">D</span>
+            <h3>Insights semanales</h3>
+            <p>Un informe honesto cada viernes: dónde se fue el tiempo y qué cambiar la semana que viene.</p>
+          </div>
+          <div class="viz viz--chart" aria-hidden="true">
+            <svg viewBox="0 0 200 70" preserveAspectRatio="none"><path d="M0 58 C 30 52, 45 40, 70 44 S 110 20, 135 26 S 175 8, 200 6" /></svg>
+          </div>
+        </article>
+
+        <article class="tile tile--wide tile--int" data-spot data-reveal>
+          <div class="tile__copy">
+            <span class="tile__num">E</span>
+            <h3>Se conecta con lo que ya usas</h3>
+            <p>Google Calendar, Outlook, Slack, Notion, Jira, Linear y más de 40 integraciones. Sin migraciones, sin cambiar de costumbres.</p>
+          </div>
+          <div class="viz viz--int" aria-hidden="true">
+            <span>Calendar</span><span>Slack</span><span>Notion</span><span>Jira</span><span>Linear</span><span>Outlook</span><span>Asana</span><span>Zoom</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats container" aria-label="Resultados">
+      <div class="stat" data-reveal><strong><span data-count="38">38</span>%</strong><p>más tiempo de foco por persona en el primer trimestre</p></div>
+      <div class="stat" data-reveal><strong><span data-count="6.4" data-decimals="1">6,4</span> h</strong><p>ahorradas por semana en reuniones y cambios de contexto</p></div>
+      <div class="stat" data-reveal><strong><span data-count="12000">12.000</span>+</strong><p>equipos en 31 países confían en Kairo cada día</p></div>
+      <div class="stat" data-reveal><strong><span data-count="94">94</span>%</strong><p>de los equipos siguen usándolo después del primer año</p></div>
+    </section>
+
+    <!-- ============ MÉTODO ============ -->
+    <section class="method" id="metodo">
+      <div class="container method__inner">
+        <div class="method__media" data-reveal>
+          <figure class="frame">
+            <img src="assets/img/workspace.jpg" alt="Escritorio con una laptop encendida y libros, iluminado por luz de tarde" loading="lazy" width="960" height="540" data-parallax />
+          </figure>
+          <div class="method__badge">
+            <span>Método K3</span>
+            <b>3 semanas</b>
+            <small>de implementación acompañada</small>
+          </div>
+        </div>
+
+        <div class="method__copy">
+          <p class="eyebrow">03 — Método</p>
+          <h2 class="h2" data-reveal>No vendemos software.<br /><em>Instalamos un hábito.</em></h2>
+          <ol class="steps">
+            <li data-reveal>
+              <span class="steps__n">01</span>
+              <div><h3>Diagnóstico</h3><p>Analizamos dos semanas de calendario y tareas de tu equipo. Encontramos dónde se pierde el tiempo, con datos y sin juicios.</p></div>
+            </li>
+            <li data-reveal>
+              <span class="steps__n">02</span>
+              <div><h3>Diseño del ritmo</h3><p>Definimos juntos las reglas: horas protegidas, días sin reuniones, cómo se priorizan los pedidos entre áreas.</p></div>
+            </li>
+            <li data-reveal>
+              <span class="steps__n">03</span>
+              <div><h3>Acompañamiento</h3><p>Un especialista de Kairo trabaja con tus líderes durante las primeras semanas hasta que el nuevo ritmo sale solo.</p></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS ============ -->
+    <section class="about container" id="nosotros">
+      <div class="about__head">
+        <p class="eyebrow">04 — Nosotros</p>
+        <h2 class="h2 h2--xl" data-reveal>Somos un equipo que<br />odiaba perder <em>el tiempo.</em></h2>
+      </div>
+
+      <figure class="about__photo frame" data-reveal>
+        <img src="assets/img/team.jpg" alt="Equipo de Kairo trabajando alrededor de una mesa con laptops y cuadernos" loading="lazy" width="960" height="640" data-parallax />
+        <figcaption>Oficina de Buenos Aires, sesión de planificación del lunes.</figcaption>
+      </figure>
+
+      <div class="about__grid">
+        <p class="about__story" data-reveal>
+          Kairo nació en 2021, cuando tres ex consultores y dos ingenieros hicieron la cuenta:
+          pasaban más horas coordinando el trabajo que haciéndolo. Construimos la herramienta
+          que necesitábamos y la probamos durante un año en nuestro propio equipo antes de
+          venderla a nadie.
+        </p>
+        <p class="about__story about__story--dim" data-reveal>
+          Hoy somos 48 personas repartidas entre Buenos Aires, Madrid y Ciudad de México.
+          Seguimos trabajando igual: pocas reuniones, mañanas de foco y decisiones por escrito.
+        </p>
+        <ul class="values">
+          <li data-reveal><b>Menos, pero mejor</b><span>Cada función nueva tiene que quitar trabajo, no sumarlo.</span></li>
+          <li data-reveal><b>Tus datos son tuyos</b><span>Cifrado de extremo a extremo y cero venta de información.</span></li>
+          <li data-reveal><b>Personas primero</b><span>Soporte humano en español, en menos de dos horas.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS / CASOS ============ -->
+    <section class="voices" id="clientes">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">05 — Clientes</p>
+          <h2 class="h2" data-reveal>Lo que cambia cuando<br /><em>el día tiene un plan.</em></h2>
+        </div>
+
+        <figure class="quote" data-reveal data-spot>
+          <div class="quote__img">
+            <img src="assets/img/portrait.jpg" alt="Retrato de Lucía Ferrer, sonriendo" loading="lazy" width="500" height="500" />
+          </div>
+          <div class="quote__body">
+            <span class="quote__mark" aria-hidden="true">“</span>
+            <blockquote>
+              Pasamos de reuniones que se comían la semana a mañanas enteras de trabajo profundo.
+              En tres meses el equipo sacó dos lanzamientos que llevaban un año postergados.
+            </blockquote>
+            <figcaption>
+              <b>Lucía Ferrer</b>
+              <span>COO · Altamar Logística · 220 personas</span>
+            </figcaption>
+            <div class="quote__metrics">
+              <div><strong>−41%</strong><small>horas en reuniones</small></div>
+              <div><strong>2×</strong><small>velocidad de entrega</small></div>
+            </div>
+          </div>
+        </figure>
+
+        <div class="cards3">
+          <figure class="tcard" data-reveal data-spot>
+            <blockquote>“Por fin sé en qué está cada persona sin preguntar. El standup asíncrono nos devolvió 40 minutos diarios.”</blockquote>
+            <figcaption><span class="mono-av" style="--c:#8b7bff">MO</span><div><b>Martín Ocampo</b><small>Head of Product · Prisma</small></div></figcaption>
+          </figure>
+          <figure class="tcard" data-reveal data-spot>
+            <blockquote>“Somos un estudio creativo y odiábamos las herramientas rígidas. Kairo se adapta a cómo trabajamos, no al revés.”</blockquote>
+            <figcaption><span class="mono-av" style="--c:#ff7aa2">SL</span><div><b>Sofía Laurent</b><small>Fundadora · Estudio Brújula</small></div></figcaption>
+          </figure>
+          <figure class="tcard" data-reveal data-spot>
+            <blockquote>“Los ingenieros recuperaron sus mañanas. La implementación fue tan cuidada que nadie la sintió como un cambio.”</blockquote>
+            <figcaption><span class="mono-av" style="--c:#5cc8ff">DF</span><div><b>Diego Ferraz</b><small>CTO · Lumen Labs</small></div></figcaption>
+          </figure>
+        </div>
+
+        <div class="cases">
+          <p class="cases__label">Casos de estudio</p>
+          <details class="case" data-reveal>
+            <summary><span class="case__name">Altamar Logística</span><span class="case__tag">Operaciones</span><span class="case__kpi">−41% reuniones</span><span class="case__plus" aria-hidden="true"></span></summary>
+            <div class="case__body"><p>Siete áreas, tres husos horarios y un calendario compartido imposible. Rediseñamos los rituales semanales y liberamos dos mañanas por persona.</p></div>
+          </details>
+          <details class="case" data-reveal>
+            <summary><span class="case__name">Lumen Labs</span><span class="case__tag">Ingeniería</span><span class="case__kpi">+2,3 h foco / día</span><span class="case__plus" aria-hidden="true"></span></summary>
+            <div class="case__body"><p>Un equipo de 60 ingenieros interrumpido cada 11 minutos. Con bloques de foco protegidos y guardias rotativas, los despliegues semanales pasaron de 3 a 8.</p></div>
+          </details>
+          <details class="case" data-reveal>
+            <summary><span class="case__name">Estudio Brújula</span><span class="case__tag">Diseño</span><span class="case__kpi">Entregas 30% antes</span><span class="case__plus" aria-hidden="true"></span></summary>
+            <div class="case__body"><p>Un estudio de 14 personas con proyectos superpuestos. La planificación diaria automática eliminó el “¿quién tiene esto?” de su vocabulario.</p></div>
+          </details>
+          <details class="case" data-reveal>
+            <summary><span class="case__name">Fábrica Norte</span><span class="case__tag">Manufactura</span><span class="case__kpi">−60% correos internos</span><span class="case__plus" aria-hidden="true"></span></summary>
+            <div class="case__body"><p>Mandos medios desbordados por pedidos entre turnos. Los check-ins escritos reemplazaron cadenas de correo de 30 mensajes.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section class="band">
+      <div class="band__photo" aria-hidden="true"><img src="assets/img/focus.jpg" alt="" loading="lazy" width="960" height="640" data-parallax /></div>
+      <div class="band__inner container">
+        <h2 class="band__title" data-reveal>Treinta minutos para<br /><em>recuperar tu semana.</em></h2>
+        <a href="#contacto" class="btn btn--accent btn--lg" data-magnetic data-reveal>Agendar una consulta</a>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="contact container" id="contacto">
+      <div class="contact__intro">
+        <p class="eyebrow">06 — Contacto</p>
+        <h2 class="h2" data-reveal>Hablemos de cómo<br /><em>trabaja tu equipo.</em></h2>
+        <p class="contact__lead" data-reveal>Una consulta de 30 minutos con un especialista, sin compromiso. Sales con un diagnóstico, aunque no contrates.</p>
+        <ul class="expect">
+          <li data-reveal><span>01</span>Revisamos cómo se reparte hoy el tiempo de tu equipo.</li>
+          <li data-reveal><span>02</span>Te mostramos Kairo con un caso parecido al tuyo.</li>
+          <li data-reveal><span>03</span>Te llevas tres cambios aplicables desde el lunes.</li>
+        </ul>
+        <div class="contact__direct">
+          <a href="mailto:hola@kairo.io">hola@kairo.io</a>
+          <span>Respondemos en menos de 24 h hábiles</span>
+        </div>
+      </div>
+
+      <form class="form" data-form novalidate>
+        <div class="form__row">
+          <label class="field">
+            <span>Nombre</span>
+            <input type="text" name="nombre" autocomplete="name" required placeholder="Ana García" />
+          </label>
+          <label class="field">
+            <span>Email de trabajo</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="ana@empresa.com" />
+          </label>
+        </div>
+        <div class="form__row">
+          <label class="field">
+            <span>Empresa</span>
+            <input type="text" name="empresa" autocomplete="organization" placeholder="Altamar" />
+          </label>
+          <label class="field">
+            <span>Tamaño del equipo</span>
+            <select name="equipo">
+              <option>1 – 10 personas</option>
+              <option selected>11 – 50 personas</option>
+              <option>51 – 200 personas</option>
+              <option>Más de 200</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset class="slots">
+          <legend>Horario preferido</legend>
+          <label><input type="radio" name="horario" value="09:30" /><span>09:30</span></label>
+          <label><input type="radio" name="horario" value="11:00" checked /><span>11:00</span></label>
+          <label><input type="radio" name="horario" value="14:30" /><span>14:30</span></label>
+          <label><input type="radio" name="horario" value="17:00" /><span>17:00</span></label>
+        </fieldset>
+
+        <label class="field">
+          <span>¿Qué te gustaría resolver?</span>
+          <textarea name="mensaje" rows="4" placeholder="Ej.: tenemos demasiadas reuniones y el equipo no llega a los plazos."></textarea>
+        </label>
+
+        <button type="submit" class="btn btn--accent btn--lg btn--block">
+          Reservar mi consulta
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </button>
+        <p class="form__note">Al enviar aceptas que te contactemos por email. Nada de spam, nunca.</p>
+
+        <div class="form__ok" role="status" aria-live="polite" hidden>
+          <span class="form__check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <h3>¡Listo! Tu consulta está reservada.</h3>
+          <p>Te enviamos la invitación por email. Hasta pronto.</p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <a href="#top" class="brand"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="9"/><path d="M10 8v16M10 16l9-8M13 13.5L21 24"/></svg></span><span class="brand__word">kairo</span></a>
+          <p class="footer__claim">El trabajo importante, en el momento justo.</p>
+        </div>
+        <div class="footer__cols">
+          <div><b>Producto</b><a href="#producto">Planificación</a><a href="#producto">Foco</a><a href="#producto">Integraciones</a></div>
+          <div><b>Empresa</b><a href="#nosotros">Nosotros</a><a href="#clientes">Clientes</a><a href="#metodo">Método</a></div>
+          <div><b>Contacto</b><a href="mailto:hola@kairo.io">hola@kairo.io</a><a href="#contacto">Agendar consulta</a></div>
+        </div>
+      </div>
+      <p class="footer__word" aria-hidden="true">kairo</p>
+      <div class="footer__bottom">
+        <span>© 2026 Kairo. Proyecto conceptual de portfolio.</span>
+        <span>Fotos: Openverse (CC0 / CC BY) — <a href="assets/credits.json">créditos</a></span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

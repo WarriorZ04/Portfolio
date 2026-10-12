@@ -1,0 +1,42 @@
+{
+  "team": {
+    "src": "assets/img/team.jpg",
+    "title": "Team Meeting",
+    "creator": "Startup Stock Photos",
+    "creator_url": "https://startupstockphotos.com",
+    "license": "cc0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/team-meeting-2R1OMUFVO5",
+    "source": "openverse / stocksnap"
+  },
+  "workspace": {
+    "src": "assets/img/workspace.jpg",
+    "title": "Home Office",
+    "creator": "Kristin Hardwick",
+    "creator_url": "https://www.kristinhardwick.com",
+    "license": "cc0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/home-office-D3OTBIDS9X",
+    "source": "openverse / stocksnap"
+  },
+  "focus": {
+    "src": "assets/img/focus.jpg",
+    "title": "Hands Table",
+    "creator": "Kristin Hardwick",
+    "creator_url": "https://www.kristinhardwick.com",
+    "license": "cc0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/hands-table-NCZGRBZZQI",
+    "source": "openverse / stocksnap"
+  },
+  "portrait": {
+    "src": "assets/img/portrait.jpg",
+    "title": "Headshot",
+    "creator": "Nicole Beauchamp",
+    "creator_url": "https://www.flickr.com/photos/48932385@N07",
+    "license": "by 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/48932385@N07/14303650762",
+    "source": "openverse / flickr"
+  }
+}

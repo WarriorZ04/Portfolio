@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap">
 
-<link rel="stylesheet" href="styles.css?v=20260928i">
+<link rel="stylesheet" href="styles.css?v=20261012b">
 </head>
 <body>
 
@@ -27,7 +27,13 @@
 
 <div class="cursor" data-cursor aria-hidden="true">
   <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
+  <div class="cursor-ring">
+    <svg class="cursor-face" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="11" cy="12" r="2.3" />
+      <circle cx="21" cy="12" r="2.3" />
+      <path d="M6.5 17.5h19c0 5.6-4.2 9.5-9.5 9.5s-9.5-3.9-9.5-9.5z" />
+    </svg>
+  </div>
 </div>
 
 <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -125,7 +131,7 @@
 
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
-<script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260928e"></script>
+<script defer src="lib/manifest.js?v=20261012"></script>
+<script defer src="main.js?v=20261012b"></script>
 </body>
 </html>

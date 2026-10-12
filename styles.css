@@ -163,9 +163,27 @@ html.has-custom-cursor [role="button"] {
   width: 54px;
   height: 54px;
   border-color: var(--accent);
-  background: rgba(142, 205, 240, 0.14);
+  background: rgba(8, 14, 22, 0.6);   /* fondo oscuro para que la carita se lea sobre la nieve clara */
 }
 .cursor.is-hover .cursor-dot { opacity: 0; }
+
+/* Carita feliz ":D" dentro del anillo, solo al pasar por algo clickeable */
+.cursor-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  fill: var(--accent);
+  opacity: 0;
+  transform: scale(0.4) rotate(-12deg);
+  transition: opacity .25s var(--ease-out), transform .35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.cursor.is-hover .cursor-face {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
 .cursor.is-down .cursor-ring { width: 28px; height: 28px; }
 
 /* Sin mouse (touch) o sin JS: cursor nativo de siempre */
@@ -628,6 +646,7 @@ html.has-custom-cursor [role="button"] {
   color: var(--ink);
   width: min(96vw, 980px);
   height: min(92svh, 720px);
+  margin: auto;              /* el reset global pone margin:0 y lo dejaba en la esquina */
   padding: 0;
   border-radius: 18px;
   overflow: hidden;

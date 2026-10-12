@@ -269,6 +269,15 @@
     title.textContent = game.title;
     openLink.href = game.url;
     if (typeof modal.showModal === "function") modal.showModal();
+    // El modal vive en la "capa superior" del navegador y tapa todo lo demás,
+    // incluido el cursor. Mientras está abierto, el cursor viaja adentro.
+    var cursor = $("[data-cursor]");
+    if (cursor && cursor.parentNode !== modal) modal.appendChild(cursor);
+  }
+
+  function returnCursorToBody() {
+    var cursor = $("[data-cursor]");
+    if (cursor && cursor.parentNode !== document.body) document.body.appendChild(cursor);
   }
 
   function initGameModal() {
@@ -278,6 +287,7 @@
     var closeBtn = $("[data-game-modal-close]", modal);
     var close = function () {
       modal.close();
+      returnCursorToBody();
       frame.src = "about:blank";
     };
     closeBtn.addEventListener("click", close);
@@ -286,7 +296,11 @@
       var inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
       if (!inside) close();
     });
-    modal.addEventListener("cancel", function () { frame.src = "about:blank"; });
+    modal.addEventListener("cancel", function () {          // Esc
+      returnCursorToBody();
+      frame.src = "about:blank";
+    });
+    modal.addEventListener("close", returnCursorToBody);    // respaldo para cualquier otro cierre
   }
 
   /* ---------- Cursor personalizado (dot + anillo con retraso) ---------- */
@@ -318,6 +332,10 @@
     });
 
     document.addEventListener("mouseover", function (e) {
+      // Sobre un iframe (el juego) la página deja de recibir el mouse: se oculta
+      // el cursor personalizado y queda el nativo del propio juego.
+      if (e.target.tagName === "IFRAME") el.classList.remove("is-ready");
+      else if (ready) el.classList.add("is-ready");
       if (e.target.closest && e.target.closest(HOVER_SEL)) el.classList.add("is-hover");
     });
     document.addEventListener("mouseout", function (e) {
