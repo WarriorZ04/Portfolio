@@ -289,6 +289,56 @@
     modal.addEventListener("cancel", function () { frame.src = "about:blank"; });
   }
 
+  /* ---------- Cursor personalizado (dot + anillo con retraso) ---------- */
+
+  function initCursor() {
+    if (!fineHover) return; // solo con mouse real; en touch queda el cursor nativo
+    var el = $("[data-cursor]");
+    if (!el) return;
+    var dot = $(".cursor-dot", el);
+    var ring = $(".cursor-ring", el);
+
+    var mx = 0, my = 0;        // posición real del mouse
+    var rx = 0, ry = 0;        // posición del anillo (con retraso)
+    var ready = false;
+
+    var HOVER_SEL = 'a, button, [role="button"], input, textarea, select, summary';
+
+    document.addEventListener("mousemove", function (e) {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = "translate3d(" + mx + "px," + my + "px,0) translate(-50%,-50%)";
+      if (!ready) {
+        ready = true;
+        rx = mx; ry = my;
+        ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0) translate(-50%,-50%)";
+        el.classList.add("is-ready");
+        document.documentElement.classList.add("has-custom-cursor");
+      }
+    });
+
+    document.addEventListener("mouseover", function (e) {
+      if (e.target.closest && e.target.closest(HOVER_SEL)) el.classList.add("is-hover");
+    });
+    document.addEventListener("mouseout", function (e) {
+      if (e.target.closest && e.target.closest(HOVER_SEL) && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(HOVER_SEL))) {
+        el.classList.remove("is-hover");
+      }
+    });
+    document.addEventListener("mousedown", function () { el.classList.add("is-down"); });
+    document.addEventListener("mouseup", function () { el.classList.remove("is-down"); });
+
+    document.addEventListener("mouseleave", function () { el.classList.remove("is-ready"); });
+    document.addEventListener("mouseenter", function () { if (ready) el.classList.add("is-ready"); });
+
+    (function follow() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      if (ready) ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0) translate(-50%,-50%)";
+      requestAnimationFrame(follow);
+    })();
+  }
+
   /* ---------- Boot ---------- */
 
   function boot() {
@@ -296,6 +346,7 @@
     safe(mountGames, "mountGames");
     safe(initNav, "initNav");
     safe(setupSmoothScroll, "setupSmoothScroll");
+    safe(initCursor, "initCursor");
     safe(initMouseGradient, "initMouseGradient");
     safe(initSnow, "initSnow");
     safe(initScrim, "initScrim");
